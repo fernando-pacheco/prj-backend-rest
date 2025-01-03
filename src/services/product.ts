@@ -16,6 +16,7 @@ export class ProductServices {
                 description: body.description,
                 fullDescription: body.fullDescription,
                 tag: body.tag,
+                newPrice: body.newPrice,
             },
         })
 
@@ -39,6 +40,7 @@ export class ProductServices {
         const product = await this.ProductModel.update({
             where: { id },
             data: {
+                id: body.id,
                 name: body.name,
                 price: body.price,
                 description: body.description,
