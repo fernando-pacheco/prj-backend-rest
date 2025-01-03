@@ -12,8 +12,8 @@ model Product {
   id              String     @id @default(cuid())
   tag             String
   name            String
-  description     String
-  fullDescription String
+  description     String?
+  fullDescription String?
   price           Float
   newPrice        Float?
   ItemCart        ItemCart[]
