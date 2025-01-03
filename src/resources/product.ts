@@ -20,7 +20,7 @@ export class ProductResources extends Resources<Product> {
     }
 
     public async create(
-        request: RequestData<{ name: string; id: string; price: number }>,
+        request: RequestData<Product>,
         reply: FastifyReply
     ): Promise<void> {
         const body = request.body
@@ -34,7 +34,7 @@ export class ProductResources extends Resources<Product> {
     }
 
     public async get(
-        request: RequestData<{ name: string; id: string; price: number }>,
+        request: RequestData<Product>,
         reply: FastifyReply
     ): Promise<void> {
         const { id } = request.params
@@ -47,7 +47,7 @@ export class ProductResources extends Resources<Product> {
     }
 
     public async update(
-        request: RequestData<{ name: string; id: string; price: number }>,
+        request: RequestData<Product>,
         reply: FastifyReply
     ): Promise<void> {
         const { id } = request.params
@@ -67,7 +67,7 @@ export class ProductResources extends Resources<Product> {
     }
 
     public async delete(
-        request: RequestData<{ name: string; id: string; price: number }>,
+        request: RequestData<Product>,
         reply: FastifyReply
     ): Promise<void> {
         const { id } = request.params
