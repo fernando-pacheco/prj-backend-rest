@@ -20,6 +20,10 @@ describe("ProductServices", () => {
                 id: "1",
                 name: "Test Product",
                 price: 2,
+                description: "desc",
+                fullDescription: "f-desc",
+                newPrice: 3,
+                tag: "Tag",
             }
 
             jest.spyOn(prismaMock.product, "create").mockResolvedValue(
@@ -31,7 +35,11 @@ describe("ProductServices", () => {
             expect(prismaMock.product.create).toHaveBeenCalledWith({
                 data: {
                     name: productData.name,
-                    price: 2,
+                    price: productData.price,
+                    description: productData.description,
+                    fullDescription: productData.fullDescription,
+                    tag: productData.tag,
+                    newPrice: productData.newPrice,
                 },
             })
             expect(result).toEqual(productData)
@@ -43,13 +51,21 @@ describe("ProductServices", () => {
             const products: Product[] = [
                 {
                     id: "1",
-                    name: "Product 1",
+                    name: "Test Product",
                     price: 2,
+                    description: "desc",
+                    fullDescription: "f-desc",
+                    newPrice: 3,
+                    tag: "Tag",
                 },
                 {
                     id: "2",
-                    name: "Product 2",
-                    price: 2,
+                    name: "Test Product2",
+                    price: 3,
+                    description: "desc",
+                    fullDescription: "f-desc",
+                    newPrice: 4,
+                    tag: "Tag",
                 },
             ]
 
@@ -70,6 +86,10 @@ describe("ProductServices", () => {
                 id: "1",
                 name: "Test Product",
                 price: 2,
+                description: "desc",
+                fullDescription: "f-desc",
+                newPrice: 3,
+                tag: "Tag",
             }
 
             jest.spyOn(prismaMock.product, "findUnique").mockResolvedValue(
@@ -100,8 +120,12 @@ describe("ProductServices", () => {
         it("should update a product", async () => {
             const updatedProduct: Product = {
                 id: "1",
-                name: "Updated Product",
+                name: "UPDATED Product",
                 price: 2,
+                description: "desc",
+                fullDescription: "f-desc",
+                newPrice: 3,
+                tag: "Tag",
             }
 
             jest.spyOn(prismaMock.product, "update").mockResolvedValue(
@@ -116,8 +140,13 @@ describe("ProductServices", () => {
             expect(prismaMock.product.update).toHaveBeenCalledWith({
                 where: { id: "1" },
                 data: {
+                    id: "1",
                     name: updatedProduct.name,
-                    price: 2,
+                    price: updatedProduct.price,
+                    description: updatedProduct.description,
+                    fullDescription: updatedProduct.fullDescription,
+                    newPrice: updatedProduct.newPrice,
+                    tag: updatedProduct.tag,
                 },
             })
             expect(result).toEqual(updatedProduct)
@@ -130,6 +159,10 @@ describe("ProductServices", () => {
                 id: "1",
                 name: "Deleted Product",
                 price: 2,
+                description: "desc",
+                fullDescription: "f-desc",
+                newPrice: 3,
+                tag: "Tag",
             })
 
             await productService.deleteProductByID("1")
