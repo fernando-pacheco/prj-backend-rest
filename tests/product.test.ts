@@ -140,7 +140,6 @@ describe("ProductServices", () => {
             expect(prismaMock.product.update).toHaveBeenCalledWith({
                 where: { id: "1" },
                 data: {
-                    id: "1",
                     name: updatedProduct.name,
                     price: updatedProduct.price,
                     description: updatedProduct.description,
