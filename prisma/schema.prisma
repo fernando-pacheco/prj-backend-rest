@@ -9,8 +9,55 @@ datasource db {
 }
 
 model Product {
-  id         String    @id @default(cuid())
-  name       String
-  price      Float
-  created_at DateTime? @default(now())
+  id              String     @id @default(cuid())
+  tag             String
+  name            String
+  description     String
+  fullDescription String
+  price           Float
+  newPrice        Float?
+  ItemCart        ItemCart[]
+}
+
+model Cart {
+  id        String     @id @default(cuid())
+  createdAt DateTime?  @default(now())
+  ItemCart  ItemCart[]
+  Order     Order?
+}
+
+model ItemCart {
+  id        String    @id @default(cuid())
+  productID String
+  amount    Int
+  cartID    String
+  cart      Cart      @relation(fields: [cartID], references: [id], onDelete: Cascade)
+  product   Product   @relation(fields: [productID], references: [id], onDelete: Cascade)
+  createdAt DateTime? @default(now())
+}
+
+model Payment {
+  id            String        @id @default(cuid())
+  type          String
+  paymentMethod PaymentMethod
+  value         Float
+  order         Order?
+  createdAt     DateTime?     @default(now())
+}
+
+model Order {
+  id        String    @id @default(cuid())
+  paymentID String    @unique
+  cartID    String    @unique
+  cart      Cart      @relation(fields: [cartID], references: [id], onDelete: Cascade)
+  payment   Payment   @relation(fields: [paymentID], references: [id], onDelete: Cascade)
+  userID    String
+  createdAt DateTime? @default(now())
+}
+
+enum PaymentMethod {
+  PIX
+  CREDIT
+  DEBIT
+  WALLET
 }
