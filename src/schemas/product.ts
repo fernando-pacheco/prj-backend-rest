@@ -4,12 +4,10 @@ import { SchemaType } from "../types/schema"
 
 export class ProductSchemas extends Schemas {
     public response: SchemaType = z.object({
+        id: z.string(),
         tag: z.string(),
         name: z.string(),
-        description: z.string().optional(),
-        fullDescription: z.string().optional(),
         price: z.number(),
-        newPrice: z.number().optional(),
     })
 
     public listResponse: SchemaType = z.array(this.response)
