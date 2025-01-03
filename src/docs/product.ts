@@ -1,5 +1,5 @@
 import { FastifySchema } from "fastify"
-import { DocsSchemas } from "../interfaces/docs-schemas"
+import { DocsSchemas } from "../interfaces/abstract/docs-schemas"
 import { ProductSchemas } from "../schemas/product"
 import { MessageResponses } from "../utils/message-responses"
 
