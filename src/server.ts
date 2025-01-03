@@ -36,7 +36,7 @@ class Server {
         this.app.register(fastifySwagger, {
             openapi: {
                 info: {
-                    title: `TypedAPI - ${this.AMB}`,
+                    title: `Gestão Restaurantes - API ${this.AMB}`,
                     version: "1.0.0",
                 },
             },
