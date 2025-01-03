@@ -13,6 +13,9 @@ export class ProductServices {
             data: {
                 name: body.name,
                 price: body.price,
+                description: body.description,
+                fullDescription: body.fullDescription,
+                tag: body.tag,
             },
         })
 
@@ -38,6 +41,10 @@ export class ProductServices {
             data: {
                 name: body.name,
                 price: body.price,
+                description: body.description,
+                fullDescription: body.fullDescription,
+                tag: body.tag,
+                newPrice: body.newPrice,
             },
         })
 
